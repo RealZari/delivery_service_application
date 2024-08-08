@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header {
+            background-color: #e21b70;
+            color: white;
+            padding: 0.5rem;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        header img {
+            height: 80px;
+            vertical-align: middle;
+        }
+        nav {
+            display: flex;
+            gap: 1rem;
+            margin-top: 0.5rem;
+            justify-content: center;
+        }
+        nav button {
+            background-color: #e21b70;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+        nav button:hover {
+            background-color: #c2185b;
+        }
+        main {
+            flex: 1;
+            padding: 1rem;
+        }
+        .section {
+            display: none;
+            margin-bottom: 2rem;
+        }
+        .section.active {
+            display: block;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        form label {
+            margin-bottom: 0.5rem;
+        }
+        form select {
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        form button {
+            background-color: #e21b70;
+            color: white;
+            border: none;
+            padding: 0.75rem;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+        form button:hover {
+            background-color: #c2185b;
+        }
+        footer {
+            background-color: #e21b70;
+            color: white;
+            padding: 0.2rem;
+            text-align: center;
+        }
+        ul {
+            list-style:decimal;
+            padding: 0;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        ul li {
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="eatwithease.png" alt="Logo">
+        <h1>Welcome Valued Customer</h1>
+    </header>
+    
+    <main>
+        <nav>
+            <button onclick="showSection('restaurant-list')">List of Restaurants</button>
+            <button onclick="showSection('available-dishes')">Available Dishes</button>
+            <button onclick="showSection('order-form')">Order Placement</button>
+        </nav>
+        
+        <section id="restaurant-list" class="section">
+            <h2>List of Restaurants</h2>
+            <ul>
+                <li>Serena Khaplu Palace, Gilgit-Baltistan </li>
+                <li>Cafe de Hunza, Hunza Valley </li>
+                <li>Habibi Restaurant, Mardan</li>
+                <li>La' Cucina Hotel, Lahore</li>
+                <li>Platter House, Nowshera</li>
+                <li>Ambrosia, Faisalabad </li>
+                <li>The Forest, Murree </li>
+                <li>Sialkot Restaurants </li>
+                <li>Quetta Restaurants </li>
+            </ul>
+        </section>
+        
+        <section id="available-dishes" class="section">
+            <h2>Available Dishes</h2>
+            <ul>
+                <li>Pizza - Large Size - PRICE: 2000PKR</li>
+                <li>Pasta - Large Plate - PRICE: 1100PKR</li>
+                <li>Burger - Medium Size - PRICE: 1100PKR</li>
+                <li>Sandwich - Medium  - PRICE: 600PKR</li>
+                <li>Fried Chicken - Small Size - PRICE: 1100PKR</li>
+                <li>Burger - Drink - Large - PRICE: 200PKR</li>
+            </ul>
+        </section>
+        
+        <section id="order-form" class="section">
+            <h2>Order Placement</h2>
+            <form id="order-form-content">
+                <label for="restaurant">Select Restaurant:</label>
+                <select id="restaurant" name="restaurant" required>
+                    <option value="restaurant-a">Serena Khaplu Palace, Gilgit-Baltistan</option>
+                    <option value="restaurant-b">Habibi Restaurant, Mardan</option>
+                    <option value="restaurant-c">La' Cucina Hotel, Lahore</option>
+                    <option value="restaurant-c">Cafe de Hunza, Hunza Valley</option>
+                    <option value="restaurant-c">Sialkot Restaurants</option>
+                    <option value="restaurant-c">Quetta Restaurants</option>
+                    <option value="restaurant-c">The Forest, Murree</option>
+                    <option value="restaurant-c">Ambrosia, Faisalabad</option>
+                    <option value="restaurant-c">Platter House, Nowshera</option>
+                </select>
+                <label for="dish">Select Dish:</label>
+                <select id="dish" name="dish" required>
+                    <option value="dish-1">Pizza</option>
+                    <option value="dish-2">Burger</option>
+                    <option value="dish-3">Pasta</option>
+                    <option value="dish-3">Biryani</option>
+                    <option value="dish-3">Chicken</option>
+                    <option value="dish-3">Mutton</option>
+                    <option value="dish-3">Salad</option>
+                    <option value="dish-3">Drink</option>
+                </select>
+                <button type="submit">Place Order</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2024 Zaryab Hussain</p>
+    </footer>
+
+    <script>
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(sectionId).classList.add('active');
+        }
+
+        // Show the 'restaurant-list' section by default
+        showSection('restaurant-list');
+    </script>
+</body>
+</html>

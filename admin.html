@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('bg_image.png') no-repeat right;
+            background-size: 900px auto;
+        }
+        header, footer {
+            background-color: #e21b70;
+            color: white;
+            text-align: center;
+        }
+        header {
+            padding: 10px;
+        }
+        header img {
+            height: 80px;
+            vertical-align: middle;
+        }
+        header span {
+            font-size: 24px;
+            margin-left: 20px;
+        }
+        main {
+            padding: 20px;
+            margin-right: 100px;
+        }
+        footer {
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .request-card {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .request-card button {
+            padding: 5px 10px;
+            border: none;
+            cursor: pointer;
+        }
+        .approve-btn {
+            background-color: green;
+            color: white;
+        }
+        .delete-btn {
+            background-color: red;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="eatwithease.png" alt="Logo">
+        <span>Eat with Ease - Admin Dashboard</span>
+    </header>
+    
+    <main>
+        <h1>Account Requests</h1>
+        <div id="requests"></div>
+    </main>
+    
+    <footer>
+        &copy; 2024 Zaryab Hussain
+    </footer>
+    
+    <script>
+        const requests = [
+            { type: 'Restaurant', name: 'Burger King', email: 'bk@gmail.com' },
+            { type: 'Restaurant', name: 'Pizza Hut', email: 'ph@outlook.com' },
+            { type: 'Customer', name: 'Ali Khan', email: 'Alikhan@hotmail.com' },
+            { type: 'Customer', name: 'Glassworker', email: 'gw@microsoft.com' }
+        ];
+
+        function loadRequests() {
+            const requestsContainer = document.getElementById('requests');
+            requestsContainer.innerHTML = '';
+            
+            requests.forEach((request, index) => {
+                const requestDiv = document.createElement('div');
+                requestDiv.className = 'request-card';
+                requestDiv.innerHTML = `
+                    <p><strong>Type:</strong> ${request.type}</p>
+                    <p><strong>Name:</strong> ${request.name}</p>
+                    <p><strong>Email:</strong> ${request.email}</p>
+                    <button class="approve-btn" onclick="approveRequest(${index})">Approve</button>
+                    <button class="delete-btn" onclick="deleteRequest(${index})">Delete</button>
+                `;
+                requestsContainer.appendChild(requestDiv);
+            });
+        }
+
+        function approveRequest(index) {
+            requests.splice(index, 1); 
+            loadRequests();
+        }
+
+        function deleteRequest(index) {
+            requests.splice(index, 1); 
+            loadRequests();
+        }
+
+        window.onload = loadRequests;
+    </script>
+</body>
+</html>
